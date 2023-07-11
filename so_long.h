@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/11 15:44:56 by matde-je          #+#    #+#             */
+/*   Updated: 2023/07/11 22:11:43 by matde-je         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -7,6 +19,7 @@
 # define AKEY 0
 # define SKEY 1
 # define DKEY 2
+# define PIXELS 64
 
 # include <fcntl.h>
 # include <unistd.h>
@@ -19,8 +32,6 @@ typedef struct s_map
 {
 	int		size_x;
 	int		size_y;
-//	int		moves;
-//	char	*map_line;
 	char	**matrix;
 }				t_map;
 
@@ -29,7 +40,12 @@ void			ft_putstr(char *str);
 char			*get_next_line(int fd);
 char			*ft_strcpy(char *dest, char *src);
 char			*ft_strjoin(char *linha, char *buffer);
-static size_t	ft_strlen(const char *str);
 char			*ft_strdup(char *s1);
+void			check_map(char *path);
+void			check_map2(char *path);
+void			check_map3(char *path);
+t_map			*map(void);
+int				ft_strlen(char *str);
+void			check_map4(void);
 
 #endif

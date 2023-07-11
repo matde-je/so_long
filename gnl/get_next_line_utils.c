@@ -6,13 +6,13 @@
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:48:00 by matde-je          #+#    #+#             */
-/*   Updated: 2022/12/15 23:20:37 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/07/11 21:44:13 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static size_t	ft_strlen(const char *str)
+static size_t	gnl_strlen(const char *str)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ char	*ft_strjoin(char *linha, char *buffer)
 
 	j = 0;
 	i = 0;
-	final = malloc(ft_strlen(linha) + ft_strlen(buffer) + 1);
+	final = malloc(gnl_strlen(linha) + gnl_strlen(buffer) + 1);
 	if (!final)
 		return (0);
 	while (linha != NULL && linha[i] != '\0')

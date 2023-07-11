@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 15:45:04 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/11 15:57:46 by matde-je         ###   ########.fr       */
+/*   Created: 2023/07/11 21:44:41 by matde-je          #+#    #+#             */
+/*   Updated: 2023/07/11 21:47:22 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-t_map	*map(void)
+int	ft_strlen(char *str)
 {
-	static t_map	*var;
+	int	i;
 
-	return (&var);
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
