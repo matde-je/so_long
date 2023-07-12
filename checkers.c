@@ -6,7 +6,7 @@
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:44:32 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/11 22:40:51 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/07/12 12:17:24 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,36 @@ void	check_map4(void)
 	while (++count < map()->size_y)
 	{
 		if (ft_strlen(map()->matrix[0]) != ft_strlen(map()->matrix[count]))
-			error("Invalid map")
+			error("Invalid map");
 	}
 	count = -1;
 	while (++count < map()->size_x)
 	{
-		if ((map()->matrix[0][count] != '1') && (map()->matrix[map()->size_y -1][count] != '1')
-			&& (map()->matrix[count][0] != '1') && (map()->matrix[count][map()->size_x] != '1'))
-			error("Invalid walls of map")
+		if (map()->matrix[0][count] != '1'
+			&& map()->matrix[map()->size_y -1][count] != '1')
+			error("Invalid walls of map");
 	}
+	count = 0;
+	while (++count < map()->size_y)
+	{
+		if (map()->matrix[count][0] != '1'
+			&& map()->matrix[count][map()->size_x -1] != '1')
+			error("Invalid walls of map");
+	}
+	check_map5();
+}
+
+//check chars
+void	check_map5(void)
+{
+	int	count;
+	int	pos;
+	int	collect;
+	int	escp;
+
+	count = 0;
+	pos = 0;
+	collect = 0;
+	escp = 0;
+	check_map56(pos, collect, escp, count);
 }
