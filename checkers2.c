@@ -6,7 +6,7 @@
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 11:57:02 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/12 19:22:01 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/07/12 19:32:00 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_map56(int pos, int collect, int escp, int count)
 	check_valid(count, count2);
 }
 
-//find start position and see if 
+//find start position
 void	check_valid(int count, int count2)
 {
 	while (++count < map()->size_y)
