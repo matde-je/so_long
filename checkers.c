@@ -6,7 +6,7 @@
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:44:32 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/12 12:17:24 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:51:28 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	check_map2(char *path)
 	gnl = get_next_line(fd);
 	if (!gnl)
 		error("Invalid map");
-	len = ft_strlen(gnl);
-	size_y = 1;
+	len = ft_strlen(gnl) - 1;
+	size_y = 0;
 	while (gnl != NULL)
 	{
 		gnl = get_next_line(fd);
@@ -63,7 +63,7 @@ void	check_map3(char *path)
 	fd = open(path, O_RDONLY);
 	while (++count < map()->size_y)
 	{
-		gnl = get_next_line(fd);
+		gnl = rm_nl(get_next_line(fd));
 		map()->matrix[count] = gnl;
 	}
 	close(fd);
@@ -79,20 +79,20 @@ void	check_map4(void)
 	while (++count < map()->size_y)
 	{
 		if (ft_strlen(map()->matrix[0]) != ft_strlen(map()->matrix[count]))
-			error("Invalid map");
+			error("Differences in length of map");
 	}
 	count = -1;
 	while (++count < map()->size_x)
 	{
 		if (map()->matrix[0][count] != '1'
-			&& map()->matrix[map()->size_y -1][count] != '1')
+			|| map()->matrix[map()->size_y -1][count] != '1')
 			error("Invalid walls of map");
 	}
 	count = 0;
 	while (++count < map()->size_y)
 	{
 		if (map()->matrix[count][0] != '1'
-			&& map()->matrix[count][map()->size_x -1] != '1')
+			|| map()->matrix[count][map()->size_x -1] != '1')
 			error("Invalid walls of map");
 	}
 	check_map5();
