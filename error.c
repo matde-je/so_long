@@ -6,7 +6,7 @@
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 14:04:50 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/14 20:37:05 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/07/14 22:03:01 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,15 @@ int	ft_strlen(char *str)
 	while (str[i] != '\0')
 		i++;
 	return (i);
+}
+
+char	*rm_nl(char	*str)
+{
+	int		i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == '\n')
+			str[i] = '\0';
+	return (str);
 }

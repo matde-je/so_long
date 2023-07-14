@@ -6,7 +6,7 @@
 #    By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/22 16:02:27 by matde-je          #+#    #+#              #
-#    Updated: 2023/07/14 20:37:20 by matde-je         ###   ########.fr        #
+#    Updated: 2023/07/14 22:03:22 by matde-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ CC		= cc -g -Wall -Werror -Wextra
 SRC	=	main.c							\
 		error.c							\
 		structs.c						\
-		rm_nl.c							\
 		checkers.c						\
 		checkers2.c						\
 		gnl/get_next_line.c				\
