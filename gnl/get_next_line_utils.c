@@ -6,13 +6,13 @@
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:48:00 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/11 21:44:13 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/07/14 15:46:15 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static size_t	gnl_strlen(const char *str)
+int	gnl_strlen(char *str)
 {
 	int	i;
 

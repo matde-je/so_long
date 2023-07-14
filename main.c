@@ -6,7 +6,7 @@
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:44:48 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/13 13:54:42 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/07/14 17:02:10 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		error("Invalid args");
 	check_map(argv[1]);
-	while (++count < map()->size_x)
-	{
-		free(map()->matrix[count]);
-	}
+	// while (++count < map()->size_y)
+		// printf("%s\n", map()->matrix[count]);
 	free(map()->matrix);
 }

@@ -6,7 +6,7 @@
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 11:57:02 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/13 18:51:22 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/07/14 18:04:13 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ void	check_map56(int pos, int collect, int escp, int count)
 	}
 	if (pos != 1 || collect < 1 || escp != 1)
 		error("Invalid contents in map");
-	count = 0;
-	count2 = -1;
-	create_map();
+	check_valid();
 }
 
 //find start position
@@ -63,58 +61,55 @@ void	check_valid(void)
 		}
 	}
 	check_valid2(y, x);
-	count = 0;
-	count2 = 0;
-	check_valid3(count, count2);
+	check_valid3();
 }
 
-//create map_path
-void	create_map(void)
-{
-	int	count;
-
-	count = -1;
-	map_path()->matrix = malloc(map()->size_y * map()->size_x);
-	while (++count < map()->size_y)
-		map_path()->matrix[count] = map()->matrix[count];
-	check_valid();
-}
-
-//check valid path and transform them to letter T
+//check valid path and transform it to letter T
 void	check_valid2(int count, int count2)
 {
-	map_path()->matrix[count][count2] = 'T';
-	if (map_path()->matrix[count][count2 + 1] != '1'
-		&& map_path()->matrix[count][count2 + 1] != 'T')
+	map()->matrix[count][count2] = 'T';
+	if (map()->matrix[count][count2 + 1] != '1'
+		&& map()->matrix[count][count2 + 1] != 'T')
 		check_valid2(count, count2 + 1);
-	if (map_path()->matrix[count][count2 - 1] != '1'
-		&& map_path()->matrix[count][count2 - 1] != 'T')
+	if (map()->matrix[count][count2 - 1] != '1'
+		&& map()->matrix[count][count2 - 1] != 'T')
 		check_valid2(count, count2 - 1);
-	if (map_path()->matrix[count + 1][count2] != '1'
-		&& map_path()->matrix[count + 1][count2] != 'T')
+	if (map()->matrix[count + 1][count2] != '1'
+		&& map()->matrix[count + 1][count2] != 'T')
 		check_valid2(count + 1, count2);
-	if (map_path()->matrix[count - 1][count2] != '1'
-		&& map_path()->matrix[count - 1][count2] != 'T')
+	if (map()->matrix[count - 1][count2] != '1'
+		&& map()->matrix[count - 1][count2] != 'T')
 		check_valid2(count - 1, count2);
 }
 
 // check valid path
-void	check_valid3(int count, int count2)
+void	check_valid3(void)
 {
+	int	count;
+	int	count2;
+
+	count = 0;
+	count2 = 0;
 	while (++count < map()->size_y)
 	{
 		count2 = 0;
 		while (++count2 < map()->size_x)
 		{
-			if (map_path()->matrix[count][count2] == 'E'
-				|| map_path()->matrix[count][count2] == 'C')
+			if (map()->matrix[count][count2] == 'E'
+				|| map()->matrix[count][count2] == 'C')
 				error("No path possible");
 		}
 	}
+}
+
+void	correct_map(char *path)
+{
+	int		fd;
+	int		count;
+
 	count = -1;
-	while (++count < map()->size_x)
-	{
-		free(map_path()->matrix[count]);
-	}
-	free(map_path()->matrix);
+	fd = open(path, O_RDONLY);
+	while (++count < map()->size_y)
+		map()->matrix[count] = rm_nl(get_next_line(fd));
+	close(fd);
 }

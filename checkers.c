@@ -6,7 +6,7 @@
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:44:32 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/13 15:51:28 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/07/14 18:07:45 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	check_map(char *path)
 		check_map2(path);
 	else
 		error("Invalid map");
+	correct_map(path);
 }
 
 // sizes of matrix and malloc
@@ -42,12 +43,12 @@ void	check_map2(char *path)
 	while (gnl != NULL)
 	{
 		gnl = get_next_line(fd);
+		free(gnl);
 		size_y++;
 	}
 	map()->matrix = malloc(len * size_y);
 	map()->size_y = size_y;
 	map()->size_x = len;
-	free(gnl);
 	close(fd);
 	check_map3(path);
 }
@@ -57,15 +58,11 @@ void	check_map3(char *path)
 {
 	int		fd;
 	int		count;
-	char	*gnl;
 
 	count = -1;
 	fd = open(path, O_RDONLY);
 	while (++count < map()->size_y)
-	{
-		gnl = rm_nl(get_next_line(fd));
-		map()->matrix[count] = gnl;
-	}
+		map()->matrix[count] = rm_nl(get_next_line(fd));
 	close(fd);
 	check_map4();
 }
