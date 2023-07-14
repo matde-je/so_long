@@ -6,7 +6,7 @@
 #    By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/22 16:02:27 by matde-je          #+#    #+#              #
-#    Updated: 2023/07/14 18:26:08 by matde-je         ###   ########.fr        #
+#    Updated: 2023/07/14 20:37:20 by matde-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,6 @@ SRC	=	main.c							\
 		checkers2.c						\
 		gnl/get_next_line.c				\
 		gnl/get_next_line_utils.c		\
-		libft/ft_putstr.c				\
-		libft/ft_strlen.c				\
 
 OBJ	= $(SRC:.c=.o)
 all:	$(NAME)

@@ -6,7 +6,7 @@
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 11:57:02 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/14 18:04:13 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/07/14 22:01:00 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,9 @@ void	correct_map(char *path)
 	int		fd;
 	int		count;
 
+	count = -1;
+	while (++count < map()->size_y)
+		free(map()->matrix[count]);
 	count = -1;
 	fd = open(path, O_RDONLY);
 	while (++count < map()->size_y)

@@ -6,7 +6,7 @@
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 14:04:50 by matde-je          #+#    #+#             */
-/*   Updated: 2023/06/28 15:55:27 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/07/14 20:37:05 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,3 +20,24 @@ void	error(char	*string)
 	exit(EXIT_FAILURE);
 }
 
+void	ft_putstr(char *str)
+{
+	int	count;
+
+	count = 0;
+	while (str[count])
+	{
+		write(1, &str[count], 1);
+		count++;
+	}
+}
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}

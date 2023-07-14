@@ -6,7 +6,7 @@
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:44:32 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/14 18:07:45 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/07/14 20:58:53 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,18 @@ void	check_map2(char *path)
 	size_y = 0;
 	while (gnl != NULL)
 	{
-		gnl = get_next_line(fd);
 		free(gnl);
+		gnl = get_next_line(fd);
 		size_y++;
 	}
+	free(gnl);
 	map()->matrix = malloc(len * size_y);
 	map()->size_y = size_y;
 	map()->size_x = len;
 	close(fd);
 	check_map3(path);
 }
+
 
 // put in matrix
 void	check_map3(char *path)
@@ -62,7 +64,9 @@ void	check_map3(char *path)
 	count = -1;
 	fd = open(path, O_RDONLY);
 	while (++count < map()->size_y)
+	{
 		map()->matrix[count] = rm_nl(get_next_line(fd));
+	}
 	close(fd);
 	check_map4();
 }
