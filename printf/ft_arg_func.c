@@ -1,44 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_arg_func.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 14:04:50 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/19 16:33:06 by matde-je         ###   ########.fr       */
+/*   Created: 2022/11/19 20:35:50 by matde-je          #+#    #+#             */
+/*   Updated: 2023/07/19 19:17:13 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-void	error(char	*str)
+int	arg_check(char *s, int i)
 {
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		write(1, &str[i], 1);
-	exit(1);
+	if (s[i] != '%' || (s[i] != '%' && s[i + 1] != 'i'))
+		return (2);
+	else
+		return (0);
 }
 
-int	ft_strlen(char *str)
+int	func(char *s, va_list	*arg, int i)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*rm_nl(char	*str)
-{
-	int		i;
-
-	i = -1;
-	while (str[++i])
-		if (str[i] == '\n')
-			str[i] = '\0';
-	return (str);
+	if (s[i + 1] == 'i')
+		return (ftint(arg));
+	else
+		return (0);
 }

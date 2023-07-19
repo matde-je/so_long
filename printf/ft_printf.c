@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.c                                          :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 15:45:04 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/14 16:52:09 by matde-je         ###   ########.fr       */
+/*   Created: 2022/11/19 19:10:27 by matde-je          #+#    #+#             */
+/*   Updated: 2023/07/19 19:17:37 by matde-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-t_map	*map(void)
+int	ft_printf(const char *s, ...)
 {
-	static t_map	var;
+	int		count;
+	va_list	arg;
+	int		total;
 
-	return (&var);
+	count = -1;
+	total = 0;
+	va_start(arg, s);
+	while (++count < ft_strlen((char *)s))
+	{
+		if (arg_check((char *)s, count) == 2)
+		{
+			write(1, &s[count], 1);
+			total += 1;
+		}
+		else
+			total += func((char *)s, &arg, count++);
+	}
+	va_end(arg);
+	return (total);
 }
-
