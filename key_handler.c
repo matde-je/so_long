@@ -19,20 +19,20 @@ int	key_handler(int key)
 
 	count = -1;
 	count2 = -1;
-	if (key == ESC)
+	if (key == XK_Escape)
 	{
 		mlx_destroy_window(window()->mlx_ptr, window()->window_ptr);
 		exit(0);
 	}
-	else if (key == UAK || key == WK)
+	else if (key == XK_Up)
 		move_up(count, count2);
-	else if (key == LAK || key == AK)
+	else if (key == XK_Left)
 		move_left(count, count2);
-	else if (key == RAK || key == DK)
+	else if (key == XK_Right)
 		move_right(count, count2);
-	else if (key == DAK || key == SK)
+	else if (key == XK_Down)
 		move_down(count, count2);
-	window_img();
+	//window_img();
 	return (0);
 }
 
@@ -56,8 +56,15 @@ void	move_up(int count, int count2)
 					exit(0);
 				}
 				map()->moves++;
+				ft_printf("%i\n", map()->moves);
 				map()->matrix[count][count2] = '0';
 				map()->matrix[count -1][count2] = 'P';
+				mlx_put_image_to_window(window()->mlx_ptr, \
+				window()->window_ptr, window()->img['0'], \
+				count2 * 64, count * 64);
+				mlx_put_image_to_window(window()->mlx_ptr, \
+				window()->window_ptr, window()->img['P'], \
+				count2 * 64, (count -1) * 64);
 			}
 		}
 	}
@@ -83,9 +90,15 @@ void	move_down(int count, int count2)
 					exit(0);
 				}
 				map()->moves++;
-				ft_printf("%i", map()->moves);
+				ft_printf("%i\n", map()->moves);
 				map()->matrix[count][count2] = '0';
 				map()->matrix[count +1][count2] = 'P';
+				mlx_put_image_to_window(window()->mlx_ptr, \
+				window()->window_ptr, window()->img['0'], \
+				count2 * 64, count * 64);
+				mlx_put_image_to_window(window()->mlx_ptr, \
+				window()->window_ptr, window()->img['P'], \
+				count2 * 64, (count +1) * 64);
 			}
 		}
 	}
@@ -111,8 +124,15 @@ void	move_left(int count, int count2)
 					exit(0);
 				}
 				map()->moves++;
+				ft_printf("%i\n", map()->moves);
 				map()->matrix[count][count2] = '0';
 				map()->matrix[count][count2 -1] = 'P';
+				mlx_put_image_to_window(window()->mlx_ptr, \
+				window()->window_ptr, window()->img['0'], \
+				count2 * 64, count * 64);
+				mlx_put_image_to_window(window()->mlx_ptr, \
+				window()->window_ptr, window()->img['P'], \
+				(count2 -1) * 64, count * 64);
 			}
 		}
 	}
@@ -138,8 +158,15 @@ void	move_right(int count, int count2)
 					exit(0);
 				}
 				map()->moves++;
+				ft_printf("%i\n", map()->moves);
 				map()->matrix[count][count2] = '0';
 				map()->matrix[count][count2 +1] = 'P';
+				mlx_put_image_to_window(window()->mlx_ptr, \
+				window()->window_ptr, window()->img['0'], \
+				count2 * 64, count * 64);
+				mlx_put_image_to_window(window()->mlx_ptr, \
+				window()->window_ptr, window()->img['P'], \
+				(count2 +1) * 64, count * 64);
 			}
 		}
 	}

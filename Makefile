@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME	= so_long
-CC		= cc -g -Wall -Werror -Wextra -fsanitize=address 
+CC		= cc -g -Wall -Werror -Wextra #-fsanitize=address 
 
 SRC	=	main.c							\
 		error.c							\

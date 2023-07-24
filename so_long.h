@@ -13,17 +13,7 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define ESC 53
-# define ENTER 36
-# define LAK 37
-# define RAK 39
-# define DAK 40
-# define UAK 38
-# define WK 87
-# define AK 65
-# define SK 83
-# define DK 68
-
+# include <X11/keysym.h>
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -31,6 +21,7 @@
 # include <stdlib.h>
 # include "minilibx-linux/mlx.h"
 # include <stdarg.h>
+# include <X11/keysym.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5

@@ -30,6 +30,8 @@ void	img_func(void)
 	int	h;
 	int	w;
 
+	h = 64;
+	w = 64;
 	(window()->img['P']) = mlx_xpm_file_to_image(window()->mlx_ptr, \
 	"xpm_files/porco.xpm", &w, &h);
 	(window()->img['1']) = mlx_xpm_file_to_image(window()->mlx_ptr, \
@@ -40,6 +42,7 @@ void	img_func(void)
 	"xpm_files/morango.xpm", &w, &h);
 	(window()->img['E']) = mlx_xpm_file_to_image(window()->mlx_ptr, \
 	"xpm_files/porta.xpm", &w, &h);
+	window_img();
 }
 
 void	window_img(void)
@@ -56,9 +59,11 @@ void	window_img(void)
 		{
 			pos = map()->matrix[count][count2];
 			if (window()->img[pos])
+			{
 				mlx_put_image_to_window(window()->mlx_ptr, \
 				window()->window_ptr, window()->img[pos], \
 				count2 * 64, count * 64);
+			}
 		}
 	}
 }
