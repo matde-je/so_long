@@ -19,6 +19,7 @@ void	error(char	*str)
 	i = -1;
 	while (str[++i])
 		write(1, &str[i], 1);
+	write(1, "\n", 1);
 	exit(1);
 }
 

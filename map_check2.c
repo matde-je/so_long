@@ -69,15 +69,19 @@ void	check_valid2(int count, int count2)
 {
 	map()->matrix[count][count2] = 'T';
 	if (map()->matrix[count][count2 + 1] != '1'
+		&& map()->matrix[count][count2 + 1] != 'E'
 		&& map()->matrix[count][count2 + 1] != 'T')
 		check_valid2(count, count2 + 1);
 	if (map()->matrix[count][count2 - 1] != '1'
+		&& map()->matrix[count][count2 - 1] != 'E'
 		&& map()->matrix[count][count2 - 1] != 'T')
 		check_valid2(count, count2 - 1);
 	if (map()->matrix[count + 1][count2] != '1'
+		&& map()->matrix[count + 1][count2] != 'E'
 		&& map()->matrix[count + 1][count2] != 'T')
 		check_valid2(count + 1, count2);
 	if (map()->matrix[count - 1][count2] != '1'
+		&& map()->matrix[count - 1][count2] != 'E'
 		&& map()->matrix[count - 1][count2] != 'T')
 		check_valid2(count - 1, count2);
 }
@@ -95,8 +99,7 @@ void	check_valid3(void)
 		count2 = 0;
 		while (++count2 < map()->size_x)
 		{
-			if (map()->matrix[count][count2] == 'E'
-				|| map()->matrix[count][count2] == 'C')
+			if (map()->matrix[count][count2] == 'C')
 				error("No path possible");
 		}
 	}
