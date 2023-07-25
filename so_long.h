@@ -13,15 +13,18 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <X11/keysym.h>
+# define ESC 0xff1b
+# define LAK 0xff51
+# define RAK 0xff53
+# define DAK 0xff54
+# define UAK 0xff52
+
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>
-# include <string.h>
 # include <stdlib.h>
 # include "minilibx-linux/mlx.h"
 # include <stdarg.h>
-# include <X11/keysym.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5
@@ -66,7 +69,7 @@ void		move_up(int count, int count2);
 void		move_down(int count, int count2);
 void		move_left(int count, int count2);
 void		move_right(int count, int count2);
-void		free_all(void);
+int			free_all(void);
 void		window_img(void);
 int			collectible(void);
 long int	ft_putnbr(long int n);
@@ -75,5 +78,6 @@ int			ft_strlen(char *string);
 int			arg_check(char *string, int i);
 int			func(char *string, va_list *args, int i);
 int			ft_printf(const char	*string, ...);
+void		movements(int count, int count2);
 
 #endif

@@ -16,11 +16,11 @@ void	new_window(void)
 {
 	window()->mlx_ptr = mlx_init();
 	if (!window()->mlx_ptr)
-		error("mlx pointer null");
+		free_all();
 	(window()->window_ptr) = mlx_new_window(window()->mlx_ptr, \
 	map()->size_x * 64, map()->size_y * 64, "have fun");
 	if (!window()->window_ptr)
-		error("No window");
+		free_all();
 	map()->moves = 0;
 	img_func();
 }
@@ -68,6 +68,7 @@ void	window_img(void)
 	}
 }
 
+//key_handler helper functions
 int	collectible(void)
 {
 	int	count;
@@ -84,4 +85,14 @@ int	collectible(void)
 		}
 	}
 	return (0);
+}
+
+void	movements(int count, int count2)
+{
+	map()->moves++;
+	ft_printf("%i\n", map()->moves);
+	map()->matrix[count][count2] = 'P';
+	mlx_put_image_to_window(window()->mlx_ptr, \
+	window()->window_ptr, window()->img['P'], \
+	count2 * 64, count * 64);
 }
