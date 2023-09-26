@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matilde <matilde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 11:57:02 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/18 18:03:33 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:31:02 by matilde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,13 @@ void	check_valid(void)
 void	check_valid2(int count, int count2)
 {
 	map()->matrix[count][count2] = 'T';
-	if (map()->matrix[count][count2 + 1] != '1'
-		&& map()->matrix[count][count2 + 1] != 'E'
-		&& map()->matrix[count][count2 + 1] != 'T')
+	if (map()->matrix[count][count2 + 1] != '1' && map()->matrix[count][count2 + 1] != 'T')
 		check_valid2(count, count2 + 1);
-	if (map()->matrix[count][count2 - 1] != '1'
-		&& map()->matrix[count][count2 - 1] != 'E'
-		&& map()->matrix[count][count2 - 1] != 'T')
+	if (map()->matrix[count][count2 - 1] != '1' && map()->matrix[count][count2 - 1] != 'T')
 		check_valid2(count, count2 - 1);
-	if (map()->matrix[count + 1][count2] != '1'
-		&& map()->matrix[count + 1][count2] != 'E'
-		&& map()->matrix[count + 1][count2] != 'T')
+	if (map()->matrix[count + 1][count2] != '1' && map()->matrix[count + 1][count2] != 'T')
 		check_valid2(count + 1, count2);
-	if (map()->matrix[count - 1][count2] != '1'
-		&& map()->matrix[count - 1][count2] != 'E'
-		&& map()->matrix[count - 1][count2] != 'T')
+	if (map()->matrix[count - 1][count2] != '1'&& map()->matrix[count - 1][count2] != 'T')
 		check_valid2(count - 1, count2);
 }
 
@@ -99,7 +91,7 @@ void	check_valid3(void)
 		count2 = 0;
 		while (++count2 < map()->size_x)
 		{
-			if (map()->matrix[count][count2] == 'C')
+			if (map()->matrix[count][count2] == 'C' || map()->matrix[count][count2] == 'E')
 				error("No path possible");
 		}
 	}

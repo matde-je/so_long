@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matilde <matilde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:44:48 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/19 19:38:28 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:16:25 by matilde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,13 @@ int	main(int argc, char **argv)
 	new_window();
 	mlx_key_hook(window()->window_ptr, key_handler, NULL);
 	mlx_hook(window()->window_ptr, 17, 131072, &free_all, NULL);
-	if (!window()->window_ptr)
-		free_all();
-	else
+	if (window()->window_ptr)
 		mlx_loop(window()->mlx_ptr);
 	return (0);
 }
+// 131072: StructureNotifyMask para resize e movimento da janela ao fechar
 
-int	free_all(void)
+int	free_all(int i)
 {
 	int	count;
 
@@ -52,7 +51,8 @@ int	free_all(void)
 		mlx_destroy_display(window()->mlx_ptr);
 		free(window()->mlx_ptr);
 	}
-	exit(0);
+	if (i == 0)
+		exit(0);
 	return (0);
 }
 

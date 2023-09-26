@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matilde <matilde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 18:58:20 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/19 20:02:20 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:15:49 by matilde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	key_handler(int key)
 	count = -1;
 	count2 = -1;
 	if (key == ESC)
-		free_all();
+		free_all(0);
 	else if (key == UAK)
 		move_up(count, count2);
 	else if (key == LAK)
@@ -47,7 +47,7 @@ void	move_up(int count, int count2)
 					return ;
 				if (map()->matrix[count -1][count2] == 'E'
 					&& collectible() == 0)
-					free_all();
+					free_all(0);
 				map()->matrix[count][count2] = '0';
 				mlx_put_image_to_window(window()->mlx_ptr, \
 				window()->window_ptr, window()->img['0'], \
@@ -74,7 +74,7 @@ void	move_down(int count, int count2)
 					return ;
 				if (map()->matrix[count +1][count2] == 'E'
 					&& collectible() == 0)
-					free_all();
+					free_all(0);
 				map()->matrix[count][count2] = '0';
 				mlx_put_image_to_window(window()->mlx_ptr, \
 				window()->window_ptr, window()->img['0'], \
@@ -101,7 +101,7 @@ void	move_left(int count, int count2)
 					return ;
 				if (map()->matrix[count][count2 -1] == 'E'
 					&& collectible() == 0)
-					free_all();
+					free_all(0);
 				map()->matrix[count][count2] = '0';
 				mlx_put_image_to_window(window()->mlx_ptr, \
 				window()->window_ptr, window()->img['0'], \
@@ -128,7 +128,7 @@ void	move_right(int count, int count2)
 					return ;
 				if (map()->matrix[count][count2 +1] == 'E'
 					&& collectible() == 0)
-					free_all();
+					free_all(0);
 				map()->matrix[count][count2] = '0';
 				mlx_put_image_to_window(window()->mlx_ptr, \
 				window()->window_ptr, window()->img['0'], \

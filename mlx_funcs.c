@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_funcs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matilde <matilde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 18:29:29 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/19 19:35:48 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:16:59 by matilde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	new_window(void)
 {
 	window()->mlx_ptr = mlx_init();
 	if (!window()->mlx_ptr)
-		free_all();
+		free_all(0);
 	(window()->window_ptr) = mlx_new_window(window()->mlx_ptr, \
 	map()->size_x * 64, map()->size_y * 64, "have fun");
 	if (!window()->window_ptr)
-		free_all();
+		free_all(0);
 	map()->moves = 0;
 	img_func();
 }

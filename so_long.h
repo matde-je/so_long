@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matilde <matilde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:44:56 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/19 19:58:59 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:14:05 by matilde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void		move_up(int count, int count2);
 void		move_down(int count, int count2);
 void		move_left(int count, int count2);
 void		move_right(int count, int count2);
-int			free_all(void);
+int			free_all(int i);
 void		window_img(void);
 int			collectible(void);
 long int	ft_putnbr(long int n);
