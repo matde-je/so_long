@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matilde <matilde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:44:32 by matde-je          #+#    #+#             */
-/*   Updated: 2023/07/18 18:03:42 by matde-je         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:36:46 by matilde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ void	check_map2(char *path)
 	if (!gnl)
 		error("Invalid map");
 	len = ft_strlen(gnl) - 1;
+	if (len < 2 || gnl[1] == '0')
+	{
+		free(gnl);
+		error("Invalid map");
+	}
 	size_y = 0;
 	while (gnl != NULL)
 	{
@@ -47,13 +52,14 @@ void	check_map2(char *path)
 		size_y++;
 	}
 	free(gnl);
+	if (size_y < 2)
+		error("Invalid map");
 	map()->matrix = malloc(len * size_y);
 	map()->size_y = size_y;
 	map()->size_x = len;
 	close(fd);
 	check_map3(path);
 }
-
 
 // put in matrix
 void	check_map3(char *path)
