@@ -6,7 +6,7 @@
 /*   By: matilde <matilde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:44:32 by matde-je          #+#    #+#             */
-/*   Updated: 2023/09/27 17:38:36 by matilde          ###   ########.fr       */
+/*   Updated: 2023/09/27 17:56:34 by matilde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	check_map3(char *path, int len, int size_y)
 	{
 		map()->matrix[count] = malloc(sizeof(char) * (map()->size_x + 1));
 		line = get_next_line(fd);
-		strcpy(map()->matrix[count], rm_nl(line));
+		ft_strcpy(map()->matrix[count], rm_nl(line));
 		free(line);
 	}
 	close(fd);
