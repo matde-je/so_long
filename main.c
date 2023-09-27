@@ -6,7 +6,7 @@
 /*   By: matilde <matilde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:44:48 by matde-je          #+#    #+#             */
-/*   Updated: 2023/09/26 13:16:25 by matilde          ###   ########.fr       */
+/*   Updated: 2023/09/27 17:30:13 by matilde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	mlx_hook(window()->window_ptr, 17, 131072, &free_all, NULL);
 	if (window()->window_ptr)
 		mlx_loop(window()->mlx_ptr);
+	free_all(0);
 	return (0);
 }
 // 131072: StructureNotifyMask para resize e movimento da janela ao fechar
@@ -46,14 +47,21 @@ int	free_all(int i)
 		mlx_destroy_image(window()->mlx_ptr, window()->img['C']);
 	if (window()->window_ptr)
 		mlx_destroy_window(window()->mlx_ptr, window()->window_ptr);
+	free_all2();
+	if (i == 0)
+		exit(0);
+	if (i == 1)
+		exit(1);
+	return (0);
+}
+
+void	free_all2(void)
+{
 	if (window()->mlx_ptr)
 	{
 		mlx_destroy_display(window()->mlx_ptr);
 		free(window()->mlx_ptr);
 	}
-	if (i == 0)
-		exit(0);
-	return (0);
 }
 
 t_map	*map(void)

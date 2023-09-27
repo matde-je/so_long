@@ -6,7 +6,7 @@
 /*   By: matilde <matilde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 14:04:50 by matde-je          #+#    #+#             */
-/*   Updated: 2023/09/26 13:15:07 by matilde          ###   ########.fr       */
+/*   Updated: 2023/09/27 17:40:52 by matilde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	error(char	*str)
 		write(1, &str[i], 1);
 	write(1, "\n", 1);
 	free_all(1);
-	exit(1);
 }
 
 int	ft_strlen(char *str)
@@ -43,4 +42,18 @@ char	*rm_nl(char	*str)
 		if (str[i] == '\n')
 			str[i] = '\0';
 	return (str);
+}
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	int	i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

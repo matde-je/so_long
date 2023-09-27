@@ -6,7 +6,7 @@
 /*   By: matilde <matilde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:44:56 by matde-je          #+#    #+#             */
-/*   Updated: 2023/09/27 13:50:18 by matilde          ###   ########.fr       */
+/*   Updated: 2023/09/27 17:40:50 by matilde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ char		*get_next_line(int fd);
 char		*ft_strjoin(char *linha, char *buffer);
 void		check_map(char *path);
 void		check_map2(char *path);
-void		check_map3(char *path, int len, int size_y);
 t_map		*map(void);
 int			ft_strlen(char *str);
 void		check_map4(void);
@@ -70,6 +69,7 @@ void		move_down(int count, int count2);
 void		move_left(int count, int count2);
 void		move_right(int count, int count2);
 int			free_all(int i);
+void		free_all2(void);
 void		window_img(void);
 int			collectible(void);
 long int	ft_putnbr(long int n);
@@ -79,5 +79,7 @@ int			arg_check(char *string, int i);
 int			func(char *string, va_list *args, int i);
 int			ft_printf(const char	*string, ...);
 void		movements(int count, int count2);
+void		check_map3(char *path, int len, int size_y);
+char		*ft_strcpy(char *dest, char *src);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: matilde <matilde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:44:32 by matde-je          #+#    #+#             */
-/*   Updated: 2023/09/27 13:49:57 by matilde          ###   ########.fr       */
+/*   Updated: 2023/09/27 17:38:36 by matilde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_map(char *path)
 	correct_map(path);
 }
 
-// sizes of matrix and malloc
+//sizes of matrix
 void	check_map2(char *path)
 {
 	int		fd;
@@ -39,11 +39,6 @@ void	check_map2(char *path)
 	if (!gnl)
 		error("Invalid map");
 	len = ft_strlen(gnl) - 1;
-	if (len < 2 || gnl[1] == '0')
-	{
-		free(gnl);
-		error("Invalid map");
-	}
 	size_y = 0;
 	while (gnl != NULL)
 	{
@@ -53,25 +48,30 @@ void	check_map2(char *path)
 	}
 	free(gnl);
 	close(fd);
+	if (len < 3 || size_y < 3 || (len == 3 && size_y < 5)
+		|| (size_y == 3 && len < 5))
+		error("Invalid map");
 	check_map3(path, len, size_y);
 }
 
-// put in matrix
+// put in matrix n malloc
 void	check_map3(char *path, int len, int size_y)
 {
 	int		fd;
 	int		count;
+	char	*line;
 
-	if (size_y < 2)
-		error("Invalid map");
-	map()->matrix = malloc(len * size_y);
+	map()->matrix = malloc(sizeof(char *) * (size_y + 1));
 	map()->size_y = size_y;
 	map()->size_x = len;
 	count = -1;
 	fd = open(path, O_RDONLY);
 	while (++count < map()->size_y)
 	{
-		map()->matrix[count] = rm_nl(get_next_line(fd));
+		map()->matrix[count] = malloc(sizeof(char) * (map()->size_x + 1));
+		line = get_next_line(fd);
+		strcpy(map()->matrix[count], rm_nl(line));
+		free(line);
 	}
 	close(fd);
 	check_map4();
