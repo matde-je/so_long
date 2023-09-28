@@ -6,7 +6,7 @@
 /*   By: matilde <matilde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:44:56 by matde-je          #+#    #+#             */
-/*   Updated: 2023/09/27 17:40:50 by matilde          ###   ########.fr       */
+/*   Updated: 2023/09/27 23:57:45 by matilde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+//# include <mlx.h>
 # include "minilibx-linux/mlx.h"
 # include <stdarg.h>
 

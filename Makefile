@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: matde-je <matde-je@student.42.fr>          +#+  +:+       +#+         #
+#    By: matilde <matilde@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/22 16:02:27 by matde-je          #+#    #+#              #
-#    Updated: 2023/07/19 19:20:11 by matde-je         ###   ########.fr        #
+#    Updated: 2023/09/27 23:58:50 by matilde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ all:	$(NAME)
 
 $(NAME): $(OBJ)
 		 $(CC) $(OBJ) -Lminilibx-linux -I/minilibx-linux/mlx.h -L/usr/lib -lmlx -lXext -lX11 -lm -lz -o $(NAME)
-
+//-lX11 -lXext -lmlx
 clean:
 			rm -f $(OBJ)
 
